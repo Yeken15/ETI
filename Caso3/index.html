@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - TAMBAZO</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>TAMBO</h1>
+    </header>
+
+    <div class="carousel-container">
+        <button class="btn prev" onclick="moveSlide(-1)">❮</button>
+        <div class="carousel">
+            <img src="Imagenes/chifle.avif" alt="Imagen 1">
+            <img src="Imagenes/chizito.webp" alt="Imagen 2">
+            <img src="Imagenes/fourloko.jpg" alt="Imagen 3">
+            <img src="Imagenes/inkachip.webp" alt="Imagen 4">
+            <img src="Imagenes/pilsen.png" alt="Imagen 5">
+            <img src="Imagenes/whisky.jpg" alt="Imagen 6">
+        </div>
+        <button class="btn next" onclick="moveSlide(1)">❯</button>
+    </div>
+
+    <main>
+        <section>
+            <h2>🚀 Te entregamos tu pedido en 30 minutos</h2>
+            <p>Somos una tienda comprometida con ofrecerte los mejores productos al mejor precio.</p>
+        </section>
+
+        <section>
+            <h2> Categoria</h2>
+            <ul>
+                <li><a href="comidas">Comidas</a></li>
+                <li><a href="#bebidas">Bebidas</a></li>
+                <li><a href="#helados">Helados</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Tambazo - Senati</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel img');
+        const totalImages = images.length;
+
+        function moveSlide(direction) {
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = totalImages - 1;
+            } else if (currentIndex >= totalImages) {
+                currentIndex = 0;
+            }
+
+            const offset = -currentIndex * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Cambio automático cada 3 segundos
+        setInterval(() => moveSlide(1), 3000);
+    </script>
+</body>
+</html>
